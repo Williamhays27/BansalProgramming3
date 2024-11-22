@@ -72,7 +72,7 @@ class SocialNetwork {
         // Iterate over edges and include student names
         for (Edge edge : studentNetwork) {
             int connectedStudent = edge.to;
-            String connectedStudentName = studentNames.getOrDefault(connectedStudent, "Unknown");
+            String connectedStudentName = studentNames.get(connectedStudent);
             networkList.add(connectedStudent + " (" + connectedStudentName + ")");
         }
         return networkList;
@@ -155,14 +155,14 @@ class SocialNetwork {
     
     
 
-    public void disconnect(int a, int b) {
+    public void discon(int a, int b) {
         List<Edge> edges = graph.get(a);
         if (edges != null) {
             edges.removeIf(edge -> edge.to == b);
         }
     }
 
-    public void increaseWaitDays(int student) {
+    public void iWaitDays(int student) {
         if (waitDays.containsKey(student)) {
             int newDays = waitDays.get(student) + 1;
             waitDays.put(student, newDays);
@@ -170,7 +170,7 @@ class SocialNetwork {
         }
     }
 
-    public void decreaseWaitDays(int student) {
+    public void dWaitDays(int student) {
         if (waitDays.containsKey(student) && waitDays.get(student) > 0) {
             int newDays = waitDays.get(student) - 1;
             waitDays.put(student, newDays);
